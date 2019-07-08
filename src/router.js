@@ -18,7 +18,6 @@ Router.prototype = {
     constructor: function (routes) {
         this.routes = routes;
         this.rootElem = document.getElementById('app');
-        console.log(this.rootElem);
     },
     init: function () {
         var r = this.routes;
@@ -36,10 +35,10 @@ Router.prototype = {
                 let hsh = window.location.hash.substr(1);
                 if(route.isActiveRoute(hsh)) {
                     scope.goToRoute(route.htmlName);
-                    let icons = document.querySelectorAll('[class^=icon]');
+                    let icons = document.querySelectorAll('[class*=icon]');
                     for(var j = 0; j < icons.length; j++){
                         icons[j].classList.remove("current");
-                        if(icons[j].id == hsh){
+                        if(icons[j].classList.contains(hsh)){
                             icons[j].classList.add("current");
                         }
                     }
@@ -61,6 +60,9 @@ Router.prototype = {
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     scope.rootElem.innerHTML = this.responseText;
+                    var arr = document.getElementsByTagName('script');
+                    for (var n = 0; n < arr.length; n++)
+                        eval(arr[n].innerHTML)
                 }
             };
             xhttp.open('GET', url, true);

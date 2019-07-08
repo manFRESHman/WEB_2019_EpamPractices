@@ -1,1 +1,28 @@
-<div>STREAM PAGE</div>
+<div>
+    <div class="speaker_container"></div>
+</div>
+<script>
+    var changePlay = function(){
+        var speaker_container = document.querySelector('[class*="speaker_container"]');
+        if(speaker_container.classList.contains("playoff")){
+            speaker_container.classList.remove("playoff");
+            speaker_container.classList.add("playon");
+            speaker_container.innerHTML = `
+            <div>PLAYING</div>
+<div><img class="main_speaker" src="../assets/media/main_speaker_off.svg"></div>
+            `;
+        }
+        else{
+            speaker_container.classList.remove("playon");
+            speaker_container.classList.add("playoff");
+            speaker_container.innerHTML = `
+            <div>WAITING</div>
+<div><img class="main_speaker" src="../assets/media/main_speaker_on.svg"></div>
+            `
+        }
+    };
+
+    var speaker = document.querySelector('[class*="speaker_container"]');
+    speaker.addEventListener("click", changePlay);
+    changePlay();
+</script>
