@@ -165,9 +165,11 @@ function addListeners(htmlName){
                 for(var i = 0; i < response.length; i++){
                     var track = document.createElement('div');
                     track.className = "track";
-                    if(response[i].audioBlob[0].data.length != 0){
-                        var blob = new Blob(new Buffer(response[i].audioBlob[0].data));
-                        var audio = new Audio(URL.createObjectURL(blob));
+                    if(response[i].audioBlob[0] !== undefined && response[i].audioBlob[0].data.length != 0){
+                        var audio = document.createElement('audio');
+                        var blob = new Blob([new Uint8Array(response[i].audioBlob[0].data).buffer]);
+                        var url = URL.createObjectURL(blob);
+                        audio.src = url;
                         audio.controls = "controls";
                         var audioDiv = document.createElement('div');
                         audioDiv.className = "audioDiv";
