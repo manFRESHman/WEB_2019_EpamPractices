@@ -1,7 +1,6 @@
 import './assets/scss/app.scss';
 import {Route} from './route';
 import {Router, socket} from './router';
-import $ from 'jquery';
 
 (function () {
     function init() {
@@ -13,12 +12,3 @@ import $ from 'jquery';
     }
     init();
 }());
-
-socket.on('user', function (usercount) {
-    $('.usercount').text(usercount)
-});
-
-socket.on('playStarSound', () => {
-    var sound = document.getElementById("audio");
-    sound.play();
-})
