@@ -39,7 +39,7 @@ function init(){
         .then(data =>{
             const playlist_container = document.querySelector('[class*="playlist_container"]');
             playlist_container.innerHTML = "";
-            for(var i = 0; i < data.length; i++){
+            for(let i = 0; i < data.length; i++){
                 if(data[i].audioBlob[0] !== undefined && data[i].audioBlob[0].data.length != 0){                     
                     const trackDiv = new TrackDiv(data[i]);
                     playlist_container.appendChild(trackDiv.getElem());

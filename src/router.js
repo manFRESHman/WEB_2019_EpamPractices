@@ -32,7 +32,7 @@ Router.prototype = {
         this.rootElem = document.getElementById('app');
     },
     init: function () {
-        var r = this.routes;
+        let r = this.routes;
         (function(scope, r) { 
             window.addEventListener('hashchange', function (e) {
                 scope.hasChanged(scope, r);

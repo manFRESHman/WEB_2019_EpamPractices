@@ -1,7 +1,7 @@
 import {socket} from './router';
 
 function init(){
-    var changePlay = function(){
+    function changePlay(){
         let speaker_container = document.querySelector('[class*="speaker_container"]');
         if(speaker_container.classList.contains("playoff")){
             speaker_container.classList.remove("playoff");
